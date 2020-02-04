@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Artil Icons';
+  src: url('/icons/artill_clean_icons.otf');
+}
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+:root {
+  --primary-text-color: #ffffff;
+  --secondary-text-color: #e0c711;
+
+  --primary-bgcolor-alpha: rgba(0, 0, 0, 0.65);
+  --primary-bgcolor: #0c0c0c;
+}

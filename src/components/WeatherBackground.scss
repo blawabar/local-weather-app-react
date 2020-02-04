@@ -1,0 +1,41 @@
+.weather-background {
+  // Mappings of weather conditions and background images
+  // Source: https://www.flickr.com/photos/archikvadrat/
+
+  $weather-image-map: (
+    'clear-sky-d': '/img/30664242573_8593f92772_b.jpg',
+    'clear-sky-n': '/img/31472435185_b9c3b4d38d_b.jpg',
+    'few-clouds-d': '/img/31472436005_5aacfe7cdc_b.jpg',
+    'few-clouds-n': '/img/30664242373_9b2d9dc464_b.jpg',
+    'scattered-clouds-d': '/img/31472434775_91f4a3a2f6_b.jpg',
+    'scattered-clouds-n': '/img/30664242033_fca334390a_b.jpg',
+    'broken-clouds-d': '/img/30664243663_cbbf157910_b.jpg',
+    'broken-clouds-n': '/img/30664242943_4119a36d62_b.jpg',
+    'shower-rain-d': '/img/31472434515_1f2871152e_b.jpg',
+    'shower-rain-n': '/img/30664241663_5cdc2be728_b.jpg',
+    'rain-d': '/img/31472436015_4ecb3a0430_b.jpg',
+    'rain-n': '/img/30664243333_fcb86451c0_b.jpg',
+    'thunderstorm-d': '/img/31472434155_2a34011a7a_b.jpg',
+    'thunderstorm-n': '/img/30664241323_4e0a0f1504_b.jpg',
+    'snow-d': '/img/31472435605_b590d518d0_b.jpg',
+    'snow-n': '/img/31472434345_ab8230d6cb_b.jpg',
+    'mist': '/img/31472434855_ff924b7803_b.jpg'
+  );
+
+  @each $class, $img-url in $weather-image-map {
+    &--#{$class} {
+      background-image: url($img-url);
+    }
+  }
+
+  width: 100%;
+  height: 87.5vh;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  @media screen and (orientation: landscape) {
+    height: 85vh;
+  }
+}
