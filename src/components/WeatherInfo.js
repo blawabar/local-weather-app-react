@@ -2,6 +2,8 @@ import React from "react";
 
 import "./WeatherInfo.scss";
 
+import Calendar from "./Calendar";
+
 const weatherIconToClassMap = {
   "01d": "clear-sky-d",
   "01n": "clear-sky-n",
@@ -30,12 +32,10 @@ const WeatherInfo = ({ weatherData }) => {
 
   const content = (
     <div className="weather-info">
-      {/* WeatherLocation ==> */}
       <section className="weather-info__location">
         <div className="weather-info__city">{`${name}, ${sys.country}`}</div>
-        <div className="weather-info__calendar">20:24 Mon, 3 Feb'20</div>
+        <Calendar />
       </section>
-      {/* WeatherLocation <== */}
       <h3 className="weather-info__temperature weather-info__temperature--is-celsius">
         {temp.toFixed(1)}
       </h3>
@@ -45,7 +45,6 @@ const WeatherInfo = ({ weatherData }) => {
         ></p>
         <p className="weather-info__text">{description}</p>
       </section>
-      {/* WeatherDetials ==> */}
       <section className="weather-info__details">
         <div className="weather-info__wind">
           <p className="weather-info__title">Wind speed</p>
@@ -60,7 +59,6 @@ const WeatherInfo = ({ weatherData }) => {
           <p className="weather-info__value">{`${humidity} %`}</p>
         </div>
       </section>
-      {/* WeatherDetials <== */}
     </div>
   );
 
