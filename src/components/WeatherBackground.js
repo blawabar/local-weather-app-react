@@ -23,12 +23,15 @@ const weatherIconToClassMap = {
 };
 
 const WeatherBackground = ({ type, children }) => {
-  console.log({ type, children });
   const classType = weatherIconToClassMap[type];
   const className = classType
     ? `weather-background weather-background--${classType}`
     : "weather-background";
-  return <div className={className}>{children}</div>;
+  return (
+    <div className={className}>
+      <div className="weather-background__glass-pane">{children}</div>
+    </div>
+  );
 };
 
 export default WeatherBackground;

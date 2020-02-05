@@ -1,18 +1,7 @@
+@import 'mixins';
+
 .error-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 87.5vh;
-  background-color: var(--primary-bgcolor);
-
-  &__title {
-    font-size: 18px;
-    font-weight: 400;
-    color: red;
-  }
-
-  @media screen and (orientation: landscape) {
-    height: 85vh;
-  }
+  @include center-with-flex();
+  @include screen-bg();
+  @include screen-title(var(--error-text-color));
 }

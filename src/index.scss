@@ -15,8 +15,11 @@ html {
 
 :root {
   --primary-text-color: #ffffff;
-  --secondary-text-color: #e0c711;
+  --secondary-text-color: #74e011;
+  --error-text-color: #e0113e;
 
-  --primary-bgcolor-alpha: rgba(0, 0, 0, 0.65);
+  --primary-bgcolor-alpha: rgba(0, 0, 0, 0.7);
   --primary-bgcolor: #0c0c0c;
+
+  --footer-horiz-height: 70px;
 }

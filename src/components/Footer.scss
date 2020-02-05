@@ -1,4 +1,6 @@
 .footer {
+  @import 'mixins';
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -7,43 +9,56 @@
   padding: 5px;
   background-color: var(--primary-bgcolor);
 
-  @media screen and (orientation: landscape) {
-    height: 15vh;
+  @include mq-landscape-and-ipad() {
+    height: var(--footer-horiz-height);
   }
 
   &__copyright {
     flex-basis: 100%;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include center-with-flex();
 
-    font-size: 12px;
+    font-size: 11px;
     color: var(--primary-text-color);
+
+    @include mq-ipad-and-desktop() {
+      font-size: 14px;
+    }
   }
 
   &__credits {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: center;
 
-    @media screen and (orientation: landscape) {
+    @include mq-landscape-and-ipad() {
       flex-direction: row;
+      align-items: center;
     }
   }
 
   &__text {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     color: var(--secondary-text-color);
+
+    @include mq-ipad-and-desktop() {
+      font-size: 12px;
+    }
   }
 
   &__link {
-    padding-left: 5px;
     font-size: 10px;
     color: var(--primary-text-color);
     text-decoration: none;
     letter-spacing: 1px;
+
+    @include mq-landscape-and-ipad() {
+      padding-left: 5px;
+    }
+
+    @include mq-ipad-and-desktop() {
+      font-size: 12px;
+    }
   }
 }

@@ -1,0 +1,35 @@
+@mixin mq-landscape-and-ipad {
+  @media screen and (orientation: landscape) and (min-width: 533px), (orientation: portrait) and (min-height: 1024px) {
+    @content;
+  }
+}
+
+@mixin mq-ipad-and-desktop {
+  @media screen and (min-width: 768px) and (min-height: 1024px), (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin center-with-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin screen-bg {
+  height: 100%;
+  background-color: var(--primary-bgcolor);
+}
+
+@mixin screen-title($var-text-color) {
+  &__title {
+    font-size: 18px;
+    font-weight: 400;
+    color: $var-text-color;
+    text-align: center;
+
+    @include mq-ipad-and-desktop() {
+      font-size: 24px;
+    }
+  }
+}

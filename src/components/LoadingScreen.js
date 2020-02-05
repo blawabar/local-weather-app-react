@@ -2,10 +2,10 @@ import React from "react";
 
 import "./LoadingScreen.scss";
 
-const LoadingScreen = () => {
+const LoadingScreen = ({ message = "Loading Local Weather Data..." }) => {
   return (
     <div className="loading-screen">
-      <h1 className="loading-screen__title">Loading Local Weather Data... </h1>
+      <h1 className="loading-screen__title">{message}</h1>
     </div>
   );
 };
