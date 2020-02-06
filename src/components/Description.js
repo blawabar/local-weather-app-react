@@ -1,12 +1,9 @@
 import React, { useContext, useRef } from "react";
 
-import "./WeatherBackground.scss";
-
+import "./Description.scss";
 import WeatherContext from "../contexts/WeatherContext";
 
-const WeatherBackground = ({ children }) => {
-  const [{ icon }] = useContext(WeatherContext).weather;
-
+const Description = () => {
   const weatherIconToClassMap = useRef({
     "01d": "clear-sky-d",
     "01n": "clear-sky-n",
@@ -27,16 +24,16 @@ const WeatherBackground = ({ children }) => {
     "50d": "mist"
   });
 
-  const classType = weatherIconToClassMap.current[icon];
+  const [{ icon, description }] = useContext(WeatherContext).weather;
 
-  const className = classType
-    ? `weather-background weather-background--${classType}`
-    : "weather-background";
   return (
-    <div className={className}>
-      <div className="weather-background__glass-pane">{children}</div>
-    </div>
+    <section className="description">
+      <p
+        className={`description__icon description__icon--${weatherIconToClassMap.current[icon]}`}
+      ></p>
+      <p className="description__text">{description}</p>
+    </section>
   );
 };
 
-export default WeatherBackground;
+export default Description;

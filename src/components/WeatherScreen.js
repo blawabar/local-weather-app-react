@@ -5,13 +5,11 @@ import "./WeatherScreen.scss";
 import WeatherBackground from "./WeatherBackground";
 import WeatherInfo from "./WeatherInfo";
 
-const WeatherScreen = ({ weatherData }) => {
-  const [{ icon }] = weatherData.weather;
-
+const WeatherScreen = () => {
   const content = (
     <div className="weather-screen">
-      <WeatherBackground type={icon}>
-        <WeatherInfo weatherData={weatherData} />
+      <WeatherBackground>
+        <WeatherInfo />
       </WeatherBackground>
     </div>
   );

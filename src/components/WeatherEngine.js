@@ -7,6 +7,8 @@ import WeatherScreen from "./WeatherScreen";
 import LoadingScreen from "./LoadingScreen";
 import ErrorScreen from "./ErrorScreen";
 
+import WeatherContext from "../contexts/WeatherContext";
+
 const WeatherEngine = () => {
   const { isLoading, weatherData, error } = useWeatherService();
 
@@ -17,7 +19,11 @@ const WeatherEngine = () => {
   } else if (error) {
     content = <ErrorScreen error={error} />;
   } else if (weatherData) {
-    content = <WeatherScreen weatherData={weatherData} />;
+    content = (
+      <WeatherContext.Provider value={weatherData}>
+        <WeatherScreen />
+      </WeatherContext.Provider>
+    );
   }
 
   return <div className="weather-engine">{content}</div>;
