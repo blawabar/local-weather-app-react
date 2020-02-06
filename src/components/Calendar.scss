@@ -6,7 +6,7 @@
   color: var(--secondary-text-color);
   letter-spacing: 1px;
 
-  @include mq-landscape-and-ipad() {
+  @include mq-phone-and-ipad() {
     margin-top: 10px;
   }
 

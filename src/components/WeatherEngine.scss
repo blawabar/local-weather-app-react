@@ -3,7 +3,7 @@
 
   height: 87.5vh;
 
-  @include mq-landscape-and-ipad() {
+  @include mq-phone-and-ipad() {
     height: calc(100vh - var(--footer-horiz-height));
   }
 }
