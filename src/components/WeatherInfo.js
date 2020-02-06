@@ -36,9 +36,11 @@ const WeatherInfo = ({ weatherData }) => {
         <div className="weather-info__city">{`${name}, ${sys.country}`}</div>
         <Calendar />
       </section>
+      {/* Thermometer ===> */}
       <h3 className="weather-info__temperature weather-info__temperature--is-celsius">
         {temp.toFixed(1)}
       </h3>
+      {/* Thermometer <=== */}
       <section className="weather-info__description">
         <p
           className={`weather-info__icon weather-info__icon--${weatherIconToClassMap[icon]}`}
