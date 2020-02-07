@@ -1,10 +1,10 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 
 class ServiceState {
-  static FETCH_INIT = 0;
-  static FETCH_SUCCESS = 1;
-  static FETCH_ERROR = 2;
-  static GEOLOCATION_ERROR = 3;
+  static FETCH_INIT = "FETCH_INIT";
+  static FETCH_SUCCESS = "FETCH_SUCCESS";
+  static FETCH_ERROR = "FETCH_ERROR";
+  static GEOLOCATION_ERROR = "GEOLOCATION_ERROR";
 }
 
 const reducerFunction = (state, action) => {
@@ -19,14 +19,14 @@ const reducerFunction = (state, action) => {
     case ServiceState.GEOLOCATION_ERROR:
       return { ...state, isLoading: false, weatherData: null, error: payload };
     default:
-      return state;
+      throw new Error(`Unknown Service State: ${type}`);
   }
 };
 
-const API = "https://api.openweathermap.org/data/2.5/weather";
-const TOKEN = "086370e96396a4464fe97ec16a0f7381";
+const useWeatherService = deps => {
+  const API = useRef("https://api.openweathermap.org/data/2.5/weather");
+  const TOKEN = useRef("086370e96396a4464fe97ec16a0f7381");
 
-const useWeatherService = () => {
   const [state, dispatch] = useReducer(reducerFunction, {
     isLoading: false,
     weatherData: null,
@@ -46,7 +46,7 @@ const useWeatherService = () => {
     const signal = aborController.signal;
 
     const getData = async ({ lat, lon }) => {
-      const URL = `${API}?lat=${lat}&lon=${lon}&units=metric&APPID=${TOKEN}`;
+      const URL = `${API.current}?lat=${lat}&lon=${lon}&units=metric&APPID=${TOKEN.current}`;
 
       try {
         dispatch({ type: ServiceState.FETCH_INIT });
@@ -109,7 +109,8 @@ const useWeatherService = () => {
     getCoords(handleGetCoords, handleError);
 
     return () => aborController.abort();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 
   return state;
 };

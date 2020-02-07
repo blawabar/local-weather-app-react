@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 
 import "./WeatherEngine.scss";
 
@@ -10,7 +10,32 @@ import ErrorScreen from "./ErrorScreen";
 import WeatherContext from "../contexts/WeatherContext";
 
 const WeatherEngine = () => {
-  const { isLoading, weatherData, error } = useWeatherService();
+  const setTimeIntervalValue = useCallback(nbrOfMinutes => {
+    if (typeof nbrOfMinutes === "number" && nbrOfMinutes > 0) {
+      return nbrOfMinutes * 60 * 1000;
+    } else {
+      throw new Error(`nbrOfMinutes must be a number greater than zero!`);
+    }
+  }, []);
+
+  const timeInterval = useRef(setTimeIntervalValue(15));
+  const [stateSwitch, setStateSwitch] = useState(false);
+
+  const updateStateSwitch = useCallback(() => {
+    setStateSwitch(stateSwitch ? false : true);
+  }, [stateSwitch]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      updateStateSwitch();
+    }, timeInterval.current);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [updateStateSwitch]);
+
+  const { isLoading, weatherData, error } = useWeatherService([stateSwitch]);
 
   let content = <LoadingScreen message={"Getting user coordinates..."} />;
 
