@@ -20,14 +20,15 @@ const WeatherInfo = () => {
       <button
         style={{
           position: "absolute",
-          top: "10px",
+          top: "15px",
           left: "50%",
           transform: "translateX(-50%)",
           width: "75px",
           margin: "0 auto",
-          padding: "0 5px",
+          padding: "0 10px",
           background: "transparent",
           border: "2px solid var(--secondary-text-color)",
+          borderRadius: "15px",
           fontFamily: "Open Sans",
           fontSize: "10px",
           fontWeight: "700",
