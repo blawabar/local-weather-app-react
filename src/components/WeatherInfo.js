@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./WeatherInfo.scss";
 
@@ -7,17 +7,54 @@ import Temperature from "./Temperature";
 import Description from "./Description";
 import Details from "./Details";
 
+import UnitsContext from "../contexts/UnitsContext";
+
 const WeatherInfo = () => {
-  const content = (
+  const [unitsType, setUnitsType] = useState("METRIC");
+
+  const handleUnitsChange = () =>
+    unitsType === "METRIC" ? setUnitsType("IMPERIAL") : setUnitsType("METRIC");
+
+  const UnitsSwitch = () => {
+    return (
+      <button
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "75px",
+          margin: "0 auto",
+          padding: "0 5px",
+          background: "transparent",
+          border: "2px solid var(--secondary-text-color)",
+          fontFamily: "Open Sans",
+          fontSize: "10px",
+          fontWeight: "700",
+          color: "var(--secondary-text-color)",
+          lineHeight: "1.75",
+          letterSpacing: "1px",
+          outline: "none",
+          cursor: "pointer"
+        }}
+        onClick={handleUnitsChange}
+      >
+        {unitsType}
+      </button>
+    );
+  };
+
+  return (
     <div className="weather-info">
-      <Location />
-      <Temperature />
-      <Description />
-      <Details />
+      <UnitsSwitch />
+      <UnitsContext.Provider value={unitsType}>
+        <Location />
+        <Temperature />
+        <Description />
+        <Details />
+      </UnitsContext.Provider>
     </div>
   );
-
-  return content;
 };
 
 export default WeatherInfo;
