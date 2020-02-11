@@ -49,7 +49,7 @@
     text-transform: capitalize;
 
     @include mq-phone-and-ipad() {
-      margin-top: 35px;
+      margin-top: 45px;
     }
 
     @include mq-ipad-and-desktop() {
