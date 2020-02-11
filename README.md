@@ -1,6 +1,26 @@
+# Local Weather Application (made with React)
+
 ## About the project
 
-TODO...
+This is an application which allows a user to see the current weather information for his/her location.
+
+Local weather data is obtained via free API served by [Open Weather Map](http://openweathermap.org).
+
+A different icon and background image can be seen depending on the weather and the user has the ability to switch between imperial and metric units.
+
+Weather data is refreshed every 30 minutes (a new request is sent to the API).
+
+Notice: Since HTML5 Geolocation is used to obtain current user's coordinates, there may be an inaccurate information present (if for example the user has dynamically assigned IP address).
+
+## Credentials
+
+1. Free API: [Open Weather Map](http://openweathermap.org).
+
+2. Weather Icon Font by [Lukas Bischoff](https://www.behance.net/artill)
+
+3. Weather Background Images by [Anatol C.](https://www.flickr.com/photos/archikvadrat/)
+
+## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
