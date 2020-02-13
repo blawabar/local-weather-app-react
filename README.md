@@ -1,5 +1,7 @@
 # Local Weather Application (made with React)
 
+Live demo: [https://blawabar.github.io/local-weather-app-react/](https://blawabar.github.io/local-weather-app-react/)
+
 ## About the project
 
 This is an application which allows a user to see the current weather information for his/her location.
