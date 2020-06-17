@@ -23,14 +23,14 @@ const reducerFunction = (state, action) => {
   }
 };
 
-const useWeatherService = deps => {
+export const useWeatherService = (deps) => {
   const API = useRef("https://api.openweathermap.org/data/2.5/weather");
   const TOKEN = useRef("086370e96396a4464fe97ec16a0f7381");
 
   const [state, dispatch] = useReducer(reducerFunction, {
     isLoading: false,
     weatherData: null,
-    error: null
+    error: null,
   });
 
   useEffect(() => {
@@ -64,9 +64,9 @@ const useWeatherService = deps => {
       }
     };
 
-    const trimCoord = coord => (coord ? parseFloat(coord.toFixed(2)) : 0.0);
+    const trimCoord = (coord) => (coord ? parseFloat(coord.toFixed(2)) : 0.0);
 
-    const extractCoords = position => {
+    const extractCoords = (position) => {
       let result = { lat: 0.0, lon: 0.0 };
 
       if (position) {
@@ -74,18 +74,18 @@ const useWeatherService = deps => {
 
         result = {
           lat: trimCoord(latitude),
-          lon: trimCoord(longitude)
+          lon: trimCoord(longitude),
         };
       }
 
       return result;
     };
 
-    const handleGetCoords = position => {
+    const handleGetCoords = (position) => {
       getData({ ...extractCoords(position) });
     };
 
-    const handleError = error => {
+    const handleError = (error) => {
       let msg = "An unknown Geolocation related error occurred.";
 
       switch (error.code) {
@@ -114,5 +114,3 @@ const useWeatherService = deps => {
 
   return state;
 };
-
-export default useWeatherService;

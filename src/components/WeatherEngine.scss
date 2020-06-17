@@ -1,9 +1,0 @@
-.weather-engine {
-  @import 'mixins';
-
-  height: 87.5vh;
-
-  @include mq-phone-and-ipad() {
-    height: calc(100vh - var(--footer-horiz-height));
-  }
-}

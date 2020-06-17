@@ -1,0 +1,7 @@
+@import '../../partials/mixins';
+
+.error-screen {
+  @include center-with-flex();
+  @include screen-bg();
+  @include screen-title(var(--error-text-color));
+}

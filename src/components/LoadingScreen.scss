@@ -1,7 +1,0 @@
-@import 'mixins';
-
-.loading-screen {
-  @include center-with-flex();
-  @include screen-bg();
-  @include screen-title(var(--secondary-text-color));
-}

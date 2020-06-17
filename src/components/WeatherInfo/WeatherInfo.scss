@@ -1,0 +1,31 @@
+@import '../../partials/mixins';
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 100%;
+  padding: 20% 25px 10%;
+  color: var(--primary-text-color);
+
+  @include mq-phone-and-ipad() {
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    grid-template-rows: repeat(2, 1fr);
+
+    padding: 7.5% 2.5% 5%;
+  }
+
+  @include mq-ipad-and-desktop() {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 720px;
+    height: 290px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    padding: 50px 25px 35px;
+  }
+}

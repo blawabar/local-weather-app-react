@@ -1,0 +1,17 @@
+@import '../../partials/mixins';
+
+.calendar {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--secondary-text-color);
+  letter-spacing: 1px;
+
+  @include mq-phone-and-ipad() {
+    margin-top: 10px;
+  }
+
+  @include mq-ipad-and-desktop() {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+}

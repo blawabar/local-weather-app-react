@@ -1,0 +1,52 @@
+@import '../../partials/mixins';
+
+.weather-background {
+  // Mappings of weather conditions and background images
+  // Source: https://www.flickr.com/photos/archikvadrat/
+
+  $weather-image-list: (
+    'clear-sky-d',
+    'clear-sky-n',
+    'few-clouds-d',
+    'few-clouds-n',
+    'scattered-clouds-d',
+    'scattered-clouds-n',
+    'broken-clouds-d',
+    'broken-clouds-n',
+    'shower-rain-d',
+    'shower-rain-n',
+    'rain-d',
+    'rain-n',
+    'thunderstorm-d',
+    'thunderstorm-n',
+    'snow-d',
+    'snow-n',
+    'mist'
+  );
+
+  @each $class-name in $weather-image-list {
+    &--#{$class-name} {
+      background-image: url('../../img/#{$class-name}.jpg');
+    }
+  }
+
+  position: relative;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__glass-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-bgcolor-alpha);
+
+    @include mq-ipad-and-desktop() {
+      background-color: transparent;
+    }
+  }
+}
