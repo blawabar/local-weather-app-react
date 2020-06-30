@@ -9,25 +9,28 @@ import {
   Description,
   Details,
 } from "components";
-
-import { UnitsContext, WeatherContext } from "contexts";
+import { UNITS_TYPE } from "app-constants";
+import { WeatherContext } from "contexts";
 
 export const WeatherInfo = () => {
-  const [unitsType, setUnitsType] = useState("METRIC");
+  const [unitsType, setUnitsType] = useState(UNITS_TYPE.METRIC);
   const { description, details, location, temp } = useContext(WeatherContext);
 
   const handleUnitsChange = () =>
-    unitsType === "METRIC" ? setUnitsType("IMPERIAL") : setUnitsType("METRIC");
+    unitsType === UNITS_TYPE.METRIC
+      ? setUnitsType(UNITS_TYPE.IMPERIAL)
+      : setUnitsType(UNITS_TYPE.METRIC);
 
   return (
     <div className="weather-info">
-      <UnitsContext.Provider value={unitsType}>
-        <UnitsSwitch handleUnitsChange={handleUnitsChange} />
-        <Location locationData={location} />
-        <Temperature tempValue={temp} />
-        <Description descData={description} />
-        <Details detailsData={details} />
-      </UnitsContext.Provider>
+      <UnitsSwitch
+        handleUnitsChange={handleUnitsChange}
+        unitsType={unitsType}
+      />
+      <Location locationData={location} />
+      <Temperature tempValue={temp} unitsType={unitsType} />
+      <Description descData={description} />
+      <Details detailsData={details} unitsType={unitsType} />
     </div>
   );
 };

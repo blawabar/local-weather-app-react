@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import "./Footer.scss";
 
 export const Footer = () => {
-  const creditsInfo = [
+  const creditsInfo = useRef([
     {
       text: "Weather API:",
       linkRef: "http://openweathermap.org",
@@ -19,18 +19,23 @@ export const Footer = () => {
       linkRef: "https://www.flickr.com/photos/archikvadrat/",
       linkText: "Anatol C.",
     },
-  ];
+  ]);
 
   return (
     <footer className="footer">
       <section className="footer__copyright">
         Local Weather Application (Bart Krolak, 2020)
       </section>
-      {creditsInfo.map(({ text, linkRef, linkText }, index) => {
+      {creditsInfo.current.map(({ text, linkRef, linkText }, index) => {
         return (
           <section key={index} className="footer__credits">
             <span className="footer__text">{text}</span>
-            <a className="footer__link" href={linkRef} target="_blank">
+            <a
+              className="footer__link"
+              href={linkRef}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {linkText}
             </a>
           </section>

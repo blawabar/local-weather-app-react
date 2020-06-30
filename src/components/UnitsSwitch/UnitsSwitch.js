@@ -1,11 +1,9 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 
 import "./UnitsSwitch.scss";
+import { UNITS_TYPE } from "app-constants";
 
-import { UnitsContext } from "contexts";
-
-export const UnitsSwitch = ({ handleUnitsChange }) => {
-  const unitsType = useContext(UnitsContext);
+export const UnitsSwitch = ({ handleUnitsChange, unitsType }) => {
   const coverPrefix = useRef("units-switch__cover");
   const unitInfoPrefix = useRef("units-switch__unit-info");
 
@@ -18,11 +16,18 @@ export const UnitsSwitch = ({ handleUnitsChange }) => {
       ? `${unitInfoPrefix.current} ${unitInfoPrefix.current}--is-active`
       : unitInfoPrefix.current;
 
+  const switchValues = [UNITS_TYPE.METRIC, UNITS_TYPE.IMPERIAL].map(
+    (unitType, index) => (
+      <p key={index} className={setUnitInfoClassName(unitType)}>
+        {unitType.toLowerCase()}
+      </p>
+    )
+  );
+
   return (
     <div className="units-switch" onClick={handleUnitsChange}>
       <div className={coverClassName}></div>
-      <p className={setUnitInfoClassName("METRIC")}>metric</p>
-      <p className={setUnitInfoClassName("IMPERIAL")}>imperial</p>
+      {switchValues}
     </div>
   );
 };
