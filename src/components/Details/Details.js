@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Details.scss";
 
-import { UNITS_TYPE } from "app-constants";
+import { UNITS_TYPE } from "data/constants";
 
 export const Details = ({
   detailsData: { windSpeed, pressure, humidity },

@@ -9,8 +9,8 @@ import {
   Description,
   Details,
 } from "components";
-import { UNITS_TYPE } from "app-constants";
-import { WeatherContext } from "contexts";
+import { UNITS_TYPE } from "data/constants";
+import { WeatherContext } from "data/context";
 
 export const WeatherInfo = () => {
   const [unitsType, setUnitsType] = useState(UNITS_TYPE.METRIC);

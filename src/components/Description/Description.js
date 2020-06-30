@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Description.scss";
 
-import { WEATHER_ICON_TO_CLASS_MAP } from "app-constants";
+import { WEATHER_ICON_TO_CLASS_MAP } from "data/constants";
 
 export const Description = ({ descData: { icon, text } }) => {
   return (

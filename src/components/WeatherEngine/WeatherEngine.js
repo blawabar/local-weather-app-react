@@ -5,7 +5,7 @@ import "./WeatherEngine.scss";
 import { useWeatherService } from "hooks";
 import { WeatherScreen, LoadingScreen, ErrorScreen } from "components";
 
-import { WeatherContext } from "contexts";
+import { WeatherContext } from "data/context";
 
 export const WeatherEngine = () => {
   const setTimeIntervalValue = useCallback((nbrOfMinutes) => {

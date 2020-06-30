@@ -25,3 +25,10 @@ export const UNITS_TYPE = Object.freeze({
   METRIC,
   IMPERIAL,
 });
+
+export const SERVICE_ACTION_TYPE = Object.freeze({
+  FETCH_INIT: "FETCH_INIT",
+  FETCH_SUCCESS: "FETCH_SUCCESS",
+  FETCH_ERROR: "FETCH_ERROR",
+  GEOLOCATION_ERROR: "GEOLOCATION_ERROR",
+});

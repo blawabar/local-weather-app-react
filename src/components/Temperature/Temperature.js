@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Temperature.scss";
 
-import { UNITS_TYPE } from "app-constants";
+import { UNITS_TYPE } from "data/constants";
 
 export const Temperature = ({ tempValue, unitsType }) => {
   const value =

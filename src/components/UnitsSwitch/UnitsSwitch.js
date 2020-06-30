@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 
 import "./UnitsSwitch.scss";
-import { UNITS_TYPE } from "app-constants";
+import { UNITS_TYPE } from "data/constants";
 
 export const UnitsSwitch = ({ handleUnitsChange, unitsType }) => {
   const coverPrefix = useRef("units-switch__cover");

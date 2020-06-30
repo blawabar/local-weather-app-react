@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 
 import "./WeatherBackground.scss";
 
-import { WeatherContext } from "contexts";
-import { WEATHER_ICON_TO_CLASS_MAP } from "app-constants";
+import { WeatherContext } from "data/context";
+import { WEATHER_ICON_TO_CLASS_MAP } from "data/constants";
 
 export const WeatherBackground = ({ children }) => {
   const { icon } = useContext(WeatherContext).description;
