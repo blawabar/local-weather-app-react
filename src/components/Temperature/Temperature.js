@@ -2,18 +2,19 @@ import React, { useContext } from "react";
 
 import "./Temperature.scss";
 
-import { WeatherContext, UnitsContext } from "contexts";
+import { UnitsContext } from "contexts";
 
-export const Temperature = () => {
-  const { temp } = useContext(WeatherContext).main;
+export const Temperature = ({ tempValue }) => {
   const unitsType = useContext(UnitsContext);
 
-  const tempValue =
-    unitsType === "METRIC" ? temp.toFixed(1) : (temp * 1.8 + 32.0).toFixed(1);
+  const value =
+    unitsType === "METRIC"
+      ? tempValue.toFixed(1)
+      : (tempValue * 1.8 + 32.0).toFixed(1);
 
   const modifier = `temperature--is-${
     unitsType === "METRIC" ? "celsius" : "fahrenheit"
   }`;
 
-  return <h3 className={`temperature ${modifier}`}>{tempValue}</h3>;
+  return <h3 className={`temperature ${modifier}`}>{value}</h3>;
 };

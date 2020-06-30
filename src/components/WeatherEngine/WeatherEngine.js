@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 import "./WeatherEngine.scss";
 
@@ -16,22 +16,20 @@ export const WeatherEngine = () => {
     }
   }, []);
 
-  const timeInterval = useRef(setTimeIntervalValue(15));
+  const timeInterval = useMemo(() => setTimeIntervalValue(15), [
+    setTimeIntervalValue,
+  ]);
   const [stateSwitch, setStateSwitch] = useState(false);
-
-  const updateStateSwitch = useCallback(() => {
-    setStateSwitch(stateSwitch ? false : true);
-  }, [stateSwitch]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      updateStateSwitch();
-    }, timeInterval.current);
+      setStateSwitch(!stateSwitch);
+    }, timeInterval);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [updateStateSwitch]);
+  }, [timeInterval, stateSwitch]);
 
   const { isLoading, weatherData, error } = useWeatherService([stateSwitch]);
 

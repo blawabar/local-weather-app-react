@@ -1,5 +1,7 @@
 import { useEffect, useReducer, useRef } from "react";
 
+import { normalizeWeatherData } from "utils";
+
 class ServiceState {
   static FETCH_INIT = "FETCH_INIT";
   static FETCH_SUCCESS = "FETCH_SUCCESS";
@@ -45,7 +47,7 @@ export const useWeatherService = (deps) => {
     const aborController = new AbortController();
     const signal = aborController.signal;
 
-    const getData = async ({ lat, lon }) => {
+    const getWeatherData = async ({ lat, lon }) => {
       const URL = `${API.current}?lat=${lat}&lon=${lon}&units=metric&APPID=${TOKEN.current}`;
 
       try {
@@ -54,7 +56,11 @@ export const useWeatherService = (deps) => {
 
         if (result.ok) {
           const data = await result.json();
-          dispatch({ type: ServiceState.FETCH_SUCCESS, payload: data });
+
+          dispatch({
+            type: ServiceState.FETCH_SUCCESS,
+            payload: normalizeWeatherData(data),
+          });
         } else {
           const error = await result.json();
           dispatch({ type: ServiceState.FETCH_ERROR, payload: error });
@@ -82,7 +88,7 @@ export const useWeatherService = (deps) => {
     };
 
     const handleGetCoords = (position) => {
-      getData({ ...extractCoords(position) });
+      getWeatherData({ ...extractCoords(position) });
     };
 
     const handleError = (error) => {

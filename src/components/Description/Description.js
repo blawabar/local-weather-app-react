@@ -1,10 +1,8 @@
-import React, { useContext, useRef } from "react";
+import React, { useRef } from "react";
 
 import "./Description.scss";
 
-import { WeatherContext } from "contexts";
-
-export const Description = () => {
+export const Description = ({ descData: { icon, text } }) => {
   const weatherIconToClassMap = useRef({
     "01d": "clear-sky-d",
     "01n": "clear-sky-n",
@@ -25,14 +23,12 @@ export const Description = () => {
     "50d": "mist",
   });
 
-  const [{ icon, description }] = useContext(WeatherContext).weather;
-
   return (
     <section className="description">
       <p
         className={`description__icon description__icon--${weatherIconToClassMap.current[icon]}`}
       ></p>
-      <p className="description__text">{description}</p>
+      <p className="description__text">{text}</p>
     </section>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./WeatherInfo.scss";
 
@@ -10,10 +10,11 @@ import {
   Details,
 } from "components";
 
-import { UnitsContext } from "contexts";
+import { UnitsContext, WeatherContext } from "contexts";
 
 export const WeatherInfo = () => {
   const [unitsType, setUnitsType] = useState("METRIC");
+  const { description, details, location, temp } = useContext(WeatherContext);
 
   const handleUnitsChange = () =>
     unitsType === "METRIC" ? setUnitsType("IMPERIAL") : setUnitsType("METRIC");
@@ -22,10 +23,10 @@ export const WeatherInfo = () => {
     <div className="weather-info">
       <UnitsContext.Provider value={unitsType}>
         <UnitsSwitch handleUnitsChange={handleUnitsChange} />
-        <Location />
-        <Temperature />
-        <Description />
-        <Details />
+        <Location locationData={location} />
+        <Temperature tempValue={temp} />
+        <Description descData={description} />
+        <Details detailsData={details} />
       </UnitsContext.Provider>
     </div>
   );

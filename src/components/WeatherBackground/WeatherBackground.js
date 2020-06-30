@@ -5,8 +5,9 @@ import "./WeatherBackground.scss";
 import { WeatherContext } from "contexts";
 
 export const WeatherBackground = ({ children }) => {
-  const [{ icon }] = useContext(WeatherContext).weather;
+  const { icon } = useContext(WeatherContext).description;
 
+  // TODO this must be moved into a constants file
   const weatherIconToClassMap = useRef({
     "01d": "clear-sky-d",
     "01n": "clear-sky-n",

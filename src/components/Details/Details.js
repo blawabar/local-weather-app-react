@@ -2,10 +2,9 @@ import React, { useContext } from "react";
 
 import "./Details.scss";
 
-import { WeatherContext, UnitsContext } from "contexts";
+import { UnitsContext } from "contexts";
 
-export const Details = () => {
-  const { main, wind } = useContext(WeatherContext);
+export const Details = ({ detailsData: { windSpeed, pressure, humidity } }) => {
   const units = useContext(UnitsContext);
 
   const render = () => {
@@ -13,20 +12,19 @@ export const Details = () => {
       {
         category: "wind",
         title: "Wind speed",
-        value:
-          units === "METRIC" ? wind.speed : (wind.speed * 2.237).toFixed(1),
+        value: units === "METRIC" ? windSpeed : (windSpeed * 2.237).toFixed(1),
         units: units === "METRIC" ? "m/s" : "mph",
       },
       {
         category: "pressure",
         title: "Air pressure",
-        value: main.pressure,
+        value: pressure,
         units: "hPa",
       },
       {
         category: "humidity",
         title: "Humidity",
-        value: main.humidity,
+        value: humidity,
         units: "%",
       },
     ];
