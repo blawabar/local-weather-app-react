@@ -1,37 +1,16 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React from "react";
 
 import "./WeatherEngine.scss";
 
-import { useWeatherService } from "hooks";
+import { useWeatherService, useHeartBeat } from "hooks";
 import { WeatherScreen, LoadingScreen, ErrorScreen } from "components";
 
 import { WeatherContext } from "data/context";
 
 export const WeatherEngine = () => {
-  const setTimeIntervalValue = useCallback((nbrOfMinutes) => {
-    if (typeof nbrOfMinutes === "number" && nbrOfMinutes > 0) {
-      return nbrOfMinutes * 60 * 1000;
-    } else {
-      throw new Error(`nbrOfMinutes must be a number greater than zero!`);
-    }
-  }, []);
+  const heartBeat = useHeartBeat(15);
 
-  const timeInterval = useMemo(() => setTimeIntervalValue(15), [
-    setTimeIntervalValue,
-  ]);
-  const [stateSwitch, setStateSwitch] = useState(false);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setStateSwitch(!stateSwitch);
-    }, timeInterval);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [timeInterval, stateSwitch]);
-
-  const { state, switchUnitsType } = useWeatherService([stateSwitch]);
+  const { state, switchUnitsType } = useWeatherService([heartBeat]);
   const { isLoading, error, weatherData, unitsType } = state;
 
   let content = <LoadingScreen message={"Getting user coordinates..."} />;

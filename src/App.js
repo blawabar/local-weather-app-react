@@ -1,11 +1,15 @@
 import React from "react";
 
-import { WeatherEngine, Footer } from "components";
+import "./App.scss";
+
+import { WeatherEngine, Footer, ErrorBoundary } from "components";
 
 function App() {
   return (
     <div className="App">
-      <WeatherEngine />
+      <ErrorBoundary>
+        <WeatherEngine />
+      </ErrorBoundary>
       <Footer />
     </div>
   );
