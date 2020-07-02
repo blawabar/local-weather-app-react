@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/local-weather-app-react/static/css/main.35ac1e30.chunk.css",
-    "main.js": "/local-weather-app-react/static/js/main.b45ba344.chunk.js",
-    "main.js.map": "/local-weather-app-react/static/js/main.b45ba344.chunk.js.map",
+    "main.css": "/local-weather-app-react/static/css/main.bf236f6e.chunk.css",
+    "main.js": "/local-weather-app-react/static/js/main.bb4353de.chunk.js",
+    "main.js.map": "/local-weather-app-react/static/js/main.bb4353de.chunk.js.map",
     "runtime-main.js": "/local-weather-app-react/static/js/runtime-main.618ea4c1.js",
     "runtime-main.js.map": "/local-weather-app-react/static/js/runtime-main.618ea4c1.js.map",
-    "static/js/2.634d2a13.chunk.js": "/local-weather-app-react/static/js/2.634d2a13.chunk.js",
-    "static/js/2.634d2a13.chunk.js.map": "/local-weather-app-react/static/js/2.634d2a13.chunk.js.map",
+    "static/js/2.f1cd8378.chunk.js": "/local-weather-app-react/static/js/2.f1cd8378.chunk.js",
+    "static/js/2.f1cd8378.chunk.js.map": "/local-weather-app-react/static/js/2.f1cd8378.chunk.js.map",
     "index.html": "/local-weather-app-react/index.html",
-    "precache-manifest.45fbae6002b437f07d0684b0c63c774f.js": "/local-weather-app-react/precache-manifest.45fbae6002b437f07d0684b0c63c774f.js",
+    "precache-manifest.35d478b09b96fb459f56c6693c12a42c.js": "/local-weather-app-react/precache-manifest.35d478b09b96fb459f56c6693c12a42c.js",
     "service-worker.js": "/local-weather-app-react/service-worker.js",
-    "static/css/main.35ac1e30.chunk.css.map": "/local-weather-app-react/static/css/main.35ac1e30.chunk.css.map",
-    "static/js/2.634d2a13.chunk.js.LICENSE.txt": "/local-weather-app-react/static/js/2.634d2a13.chunk.js.LICENSE.txt",
+    "static/css/main.bf236f6e.chunk.css.map": "/local-weather-app-react/static/css/main.bf236f6e.chunk.css.map",
+    "static/js/2.f1cd8378.chunk.js.LICENSE.txt": "/local-weather-app-react/static/js/2.f1cd8378.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/local-weather-app-react/static/media/artill_clean_icons.c1a94c25.otf",
     "static/media/WeatherBackground.scss": "/local-weather-app-react/static/media/thunderstorm-n.e0737602.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.618ea4c1.js",
-    "static/js/2.634d2a13.chunk.js",
-    "static/css/main.35ac1e30.chunk.css",
-    "static/js/main.b45ba344.chunk.js"
+    "static/js/2.f1cd8378.chunk.js",
+    "static/css/main.bf236f6e.chunk.css",
+    "static/js/main.bb4353de.chunk.js"
   ]
 }
