@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/local-weather-app-react/static/css/main.50e2fa57.chunk.css",
-    "main.js": "/local-weather-app-react/static/js/main.2595996f.chunk.js",
-    "main.js.map": "/local-weather-app-react/static/js/main.2595996f.chunk.js.map",
+    "main.css": "/local-weather-app-react/static/css/main.35ac1e30.chunk.css",
+    "main.js": "/local-weather-app-react/static/js/main.b45ba344.chunk.js",
+    "main.js.map": "/local-weather-app-react/static/js/main.b45ba344.chunk.js.map",
     "runtime-main.js": "/local-weather-app-react/static/js/runtime-main.618ea4c1.js",
     "runtime-main.js.map": "/local-weather-app-react/static/js/runtime-main.618ea4c1.js.map",
-    "static/js/2.fa8ad33a.chunk.js": "/local-weather-app-react/static/js/2.fa8ad33a.chunk.js",
-    "static/js/2.fa8ad33a.chunk.js.map": "/local-weather-app-react/static/js/2.fa8ad33a.chunk.js.map",
+    "static/js/2.634d2a13.chunk.js": "/local-weather-app-react/static/js/2.634d2a13.chunk.js",
+    "static/js/2.634d2a13.chunk.js.map": "/local-weather-app-react/static/js/2.634d2a13.chunk.js.map",
     "index.html": "/local-weather-app-react/index.html",
-    "precache-manifest.64460a79fa6b1eec4f5760afccd5aa65.js": "/local-weather-app-react/precache-manifest.64460a79fa6b1eec4f5760afccd5aa65.js",
+    "precache-manifest.45fbae6002b437f07d0684b0c63c774f.js": "/local-weather-app-react/precache-manifest.45fbae6002b437f07d0684b0c63c774f.js",
     "service-worker.js": "/local-weather-app-react/service-worker.js",
-    "static/css/main.50e2fa57.chunk.css.map": "/local-weather-app-react/static/css/main.50e2fa57.chunk.css.map",
-    "static/js/2.fa8ad33a.chunk.js.LICENSE.txt": "/local-weather-app-react/static/js/2.fa8ad33a.chunk.js.LICENSE.txt",
-    "static/media/WeatherBackground.scss": "/local-weather-app-react/static/media/31472436015_4ecb3a0430_b.5891c872.jpg",
-    "static/media/index.scss": "/local-weather-app-react/static/media/artill_clean_icons.c1a94c25.otf"
+    "static/css/main.35ac1e30.chunk.css.map": "/local-weather-app-react/static/css/main.35ac1e30.chunk.css.map",
+    "static/js/2.634d2a13.chunk.js.LICENSE.txt": "/local-weather-app-react/static/js/2.634d2a13.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/local-weather-app-react/static/media/artill_clean_icons.c1a94c25.otf",
+    "static/media/WeatherBackground.scss": "/local-weather-app-react/static/media/thunderstorm-n.e0737602.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.618ea4c1.js",
-    "static/js/2.fa8ad33a.chunk.js",
-    "static/css/main.50e2fa57.chunk.css",
-    "static/js/main.2595996f.chunk.js"
+    "static/js/2.634d2a13.chunk.js",
+    "static/css/main.35ac1e30.chunk.css",
+    "static/js/main.b45ba344.chunk.js"
   ]
 }
