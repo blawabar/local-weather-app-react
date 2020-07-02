@@ -2,13 +2,15 @@ import React from "react";
 
 import "./WeatherScreen.scss";
 
-import { WeatherBackground, WeatherInfo } from "components";
+import { WeatherBackground, WeatherInfo, ErrorBoundary } from "components";
 
 export const WeatherScreen = () => {
   const content = (
     <div className="weather-screen">
       <WeatherBackground>
-        <WeatherInfo />
+        <ErrorBoundary>
+          <WeatherInfo />
+        </ErrorBoundary>
       </WeatherBackground>
     </div>
   );

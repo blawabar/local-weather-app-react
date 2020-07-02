@@ -39,7 +39,7 @@ export const WeatherEngine = () => {
   if (isLoading) {
     content = <LoadingScreen />;
   } else if (error) {
-    content = <ErrorScreen error={error} />;
+    content = <ErrorScreen error={error.toString()} />;
   } else if (weatherData) {
     content = (
       <WeatherContext.Provider

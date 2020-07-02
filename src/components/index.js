@@ -11,3 +11,4 @@ export * from "./WeatherBackground";
 export * from "./WeatherEngine";
 export * from "./WeatherInfo";
 export * from "./WeatherScreen";
+export * from "./ErrorBoundary";

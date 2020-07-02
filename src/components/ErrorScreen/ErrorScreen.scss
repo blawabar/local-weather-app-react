@@ -4,4 +4,14 @@
   @include center-with-flex();
   @include screen-bg();
   @include screen-title(var(--error-text-color));
+  flex-direction: column;
+  padding: 0 1em;
+
+  &__details {
+    margin-top: 1em;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    text-align: justify;
+    color: var(--error-text-color);
+  }
 }

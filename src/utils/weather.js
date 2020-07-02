@@ -1,5 +1,7 @@
 import { UNITS_TYPE, SERVICE_ACTION_TYPE } from "data/constants";
 
+const trimNumericValue = (value) => parseFloat(value.toFixed(1));
+
 export const normalizeWeatherData = (weatherData) => {
   if (!weatherData || typeof weatherData !== "object") {
     throw new Error("Improper type of weather data!");
@@ -17,13 +19,13 @@ export const normalizeWeatherData = (weatherData) => {
   return {
     coord,
     location: `${name}, ${country}`,
-    temp,
+    temp: trimNumericValue(temp),
     description: {
       text: description,
       icon,
     },
     details: {
-      windSpeed: speed,
+      windSpeed: trimNumericValue(speed),
       pressure,
       humidity,
     },
@@ -37,18 +39,12 @@ export const convertWeatherDataValues = (unitsType, state) => {
     temp,
   } = weatherData;
 
-  const convertedTemperature = parseFloat(
-    (unitsType === UNITS_TYPE.METRIC
-      ? ((temp - 32) * 5) / 9
-      : temp * 1.8 + 32.0
-    ).toFixed(1)
+  const convertedTemperature = trimNumericValue(
+    unitsType === UNITS_TYPE.METRIC ? ((temp - 32) * 5) / 9 : temp * 1.8 + 32.0
   );
 
-  const convertedWindSpeed = parseFloat(
-    (unitsType === UNITS_TYPE.METRIC
-      ? windSpeed * 0.447
-      : windSpeed * 2.237
-    ).toFixed(1)
+  const convertedWindSpeed = trimNumericValue(
+    unitsType === UNITS_TYPE.METRIC ? windSpeed * 0.447 : windSpeed * 2.237
   );
 
   return {

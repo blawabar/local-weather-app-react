@@ -8,22 +8,30 @@ export const INITIAL_STATE = {
   unitsType: UNITS_TYPE.METRIC,
 };
 
+const {
+  FETCH_INIT,
+  FETCH_SUCCESS,
+  FETCH_ERROR,
+  GEOLOCATION_ERROR,
+  SWITCH_UNITS_TYPE,
+} = SERVICE_ACTION_TYPE;
+
 export const weatherReducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SERVICE_ACTION_TYPE.FETCH_INIT:
+    case FETCH_INIT:
       return { ...state, isLoading: true };
-    case SERVICE_ACTION_TYPE.FETCH_SUCCESS:
+    case FETCH_SUCCESS:
       return { ...state, isLoading: false, weatherData: payload, error: null };
-    case SERVICE_ACTION_TYPE.SWITCH_UNITS_TYPE:
+    case SWITCH_UNITS_TYPE:
       return {
         ...state,
         unitsType: payload,
         weatherData: convertWeatherDataValues(payload, state),
       };
-    case SERVICE_ACTION_TYPE.FETCH_ERROR:
-    case SERVICE_ACTION_TYPE.GEOLOCATION_ERROR:
+    case FETCH_ERROR:
+    case GEOLOCATION_ERROR:
       return { ...state, isLoading: false, weatherData: null, error: payload };
     default:
       throw new Error(`Unknown Service State: ${type}`);
