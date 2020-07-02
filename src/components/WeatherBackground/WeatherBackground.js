@@ -6,7 +6,11 @@ import { WeatherContext } from "data/context";
 import { WEATHER_ICON_TO_CLASS_MAP } from "data/constants";
 
 export const WeatherBackground = ({ children }) => {
-  const { icon } = useContext(WeatherContext).description;
+  const {
+    weatherData: {
+      description: { icon },
+    },
+  } = useContext(WeatherContext);
 
   const classType = WEATHER_ICON_TO_CLASS_MAP[icon];
 

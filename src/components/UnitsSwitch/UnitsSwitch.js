@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import "./UnitsSwitch.scss";
 import { UNITS_TYPE } from "data/constants";
 
-export const UnitsSwitch = ({ handleUnitsChange, unitsType }) => {
+export const UnitsSwitch = ({ onUnitsChange, unitsType }) => {
   const coverPrefix = useRef("units-switch__cover");
   const unitInfoPrefix = useRef("units-switch__unit-info");
 
@@ -25,7 +25,7 @@ export const UnitsSwitch = ({ handleUnitsChange, unitsType }) => {
   );
 
   return (
-    <div className="units-switch" onClick={handleUnitsChange}>
+    <div className="units-switch" onClick={onUnitsChange}>
       <div className={coverClassName}></div>
       {switchValues}
     </div>

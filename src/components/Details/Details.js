@@ -12,10 +12,7 @@ export const Details = ({
     {
       category: "wind",
       title: "Wind speed",
-      value:
-        unitsType === UNITS_TYPE.METRIC
-          ? windSpeed
-          : (windSpeed * 2.237).toFixed(1),
+      value: windSpeed,
       units: unitsType === UNITS_TYPE.METRIC ? "m/s" : "mph",
     },
     {

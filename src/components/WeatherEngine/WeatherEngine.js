@@ -31,7 +31,8 @@ export const WeatherEngine = () => {
     };
   }, [timeInterval, stateSwitch]);
 
-  const { isLoading, weatherData, error } = useWeatherService([stateSwitch]);
+  const { state, switchUnitsType } = useWeatherService([stateSwitch]);
+  const { isLoading, error, weatherData, unitsType } = state;
 
   let content = <LoadingScreen message={"Getting user coordinates..."} />;
 
@@ -41,7 +42,9 @@ export const WeatherEngine = () => {
     content = <ErrorScreen error={error} />;
   } else if (weatherData) {
     content = (
-      <WeatherContext.Provider value={weatherData}>
+      <WeatherContext.Provider
+        value={{ weatherData, unitsType, switchUnitsType }}
+      >
         <WeatherScreen />
       </WeatherContext.Provider>
     );

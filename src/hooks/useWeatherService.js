@@ -1,11 +1,11 @@
 import { useEffect, useReducer, useRef } from "react";
 
 import {
-  normalizeWeatherData,
   getCoords,
   extractCoords,
   handleGeolocationError,
-} from "utils";
+} from "utils/geolocation";
+import { normalizeWeatherData, switchUnitsType } from "utils/weather";
 
 import { SERVICE_ACTION_TYPE } from "data/constants";
 import { weatherReducer, INITIAL_STATE } from "data/reducer";
@@ -54,5 +54,5 @@ export const useWeatherService = (deps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 
-  return state;
+  return { state, switchUnitsType: switchUnitsType(state)(dispatch) };
 };
