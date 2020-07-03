@@ -6,9 +6,10 @@ import {
   handleGeolocationError,
 } from "utils/geolocation";
 import { normalizeWeatherData, switchUnitsType } from "utils/weather";
-
 import { SERVICE_ACTION_TYPE } from "data/constants";
 import { weatherReducer, INITIAL_STATE } from "data/reducer";
+
+const { FETCH_INIT, FETCH_ERROR, FETCH_SUCCESS } = SERVICE_ACTION_TYPE;
 
 export const useWeatherService = (deps) => {
   const API = useRef("https://api.openweathermap.org/data/2.5/weather");
@@ -24,22 +25,22 @@ export const useWeatherService = (deps) => {
       const URL = `${API.current}?lat=${lat}&lon=${lon}&units=metric&APPID=${TOKEN.current}`;
 
       try {
-        dispatch({ type: SERVICE_ACTION_TYPE.FETCH_INIT });
+        dispatch({ type: FETCH_INIT });
         const result = await fetch(URL, { signal });
 
         if (result.ok) {
           const data = await result.json();
 
           dispatch({
-            type: SERVICE_ACTION_TYPE.FETCH_SUCCESS,
+            type: FETCH_SUCCESS,
             payload: normalizeWeatherData(data),
           });
         } else {
           const error = await result.json();
-          dispatch({ type: SERVICE_ACTION_TYPE.FETCH_ERROR, payload: error });
+          dispatch({ type: FETCH_ERROR, payload: error });
         }
       } catch (error) {
-        dispatch({ type: SERVICE_ACTION_TYPE.FETCH_ERROR, payload: error });
+        dispatch({ type: FETCH_ERROR, payload: error });
       }
     };
 

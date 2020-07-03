@@ -1,6 +1,9 @@
 import React, { useRef } from "react";
 
+import PropTypes from "prop-types";
+
 import "./UnitsSwitch.scss";
+
 import { UNITS_TYPE } from "data/constants";
 
 export const UnitsSwitch = ({ onUnitsChange, unitsType }) => {
@@ -30,4 +33,9 @@ export const UnitsSwitch = ({ onUnitsChange, unitsType }) => {
       {switchValues}
     </div>
   );
+};
+
+UnitsSwitch.propTypes = {
+  onUnitsChange: PropTypes.func.isRequired,
+  unitsType: PropTypes.string.isRequired,
 };

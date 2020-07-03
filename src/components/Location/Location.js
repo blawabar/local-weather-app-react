@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import "./Location.scss";
 
 import { Calendar } from "components";
@@ -12,3 +14,5 @@ export const Location = ({ locationData }) => {
     </section>
   );
 };
+
+Location.propTypes = { locationData: PropTypes.string.isRequired };

@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import "./ErrorScreen.scss";
 
 export const ErrorScreen = ({ error }) => {
@@ -10,3 +12,5 @@ export const ErrorScreen = ({ error }) => {
     </div>
   );
 };
+
+ErrorScreen.propTypes = { error: PropTypes.string.isRequired };

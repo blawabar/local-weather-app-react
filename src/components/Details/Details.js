@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import "./Details.scss";
 
 import { UNITS_TYPE } from "data/constants";
@@ -41,4 +43,13 @@ export const Details = ({
   });
 
   return <section className="details">{detailsStructure}</section>;
+};
+
+Details.propTypes = {
+  detailsData: PropTypes.exact({
+    windSpeed: PropTypes.number.isRequired,
+    pressure: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+  }).isRequired,
+  unitsType: PropTypes.string.isRequired,
 };

@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import "./LoadingScreen.scss";
 
 export const LoadingScreen = ({
@@ -11,3 +13,5 @@ export const LoadingScreen = ({
     </div>
   );
 };
+
+LoadingScreen.propTypes = { message: PropTypes.string };

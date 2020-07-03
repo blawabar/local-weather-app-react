@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 
+import PropTypes from "prop-types";
+
 import "./WeatherBackground.scss";
 
 import { WeatherContext } from "data/context";
@@ -23,3 +25,5 @@ export const WeatherBackground = ({ children }) => {
     </div>
   );
 };
+
+WeatherBackground.propTypes = { children: PropTypes.element.isRequired };
