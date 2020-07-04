@@ -29,12 +29,15 @@ export const weatherReducer = (state, action) => {
         isLoading: false,
         error: null,
         success: true,
-        weatherData: payload,
+        weatherData:
+          state.unitsType === UNITS_TYPE.IMPERIAL
+            ? convertWeatherDataValues(state.unitsType, payload)
+            : payload,
       };
     case SWITCH_UNITS_TYPE:
       return {
         ...state,
-        weatherData: convertWeatherDataValues(payload, state),
+        weatherData: convertWeatherDataValues(payload, state.weatherData),
         unitsType: payload,
       };
     case GET_WEATHER_DATA_ERROR:

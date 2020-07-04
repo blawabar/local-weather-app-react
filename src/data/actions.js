@@ -6,7 +6,7 @@ import {
   handleGeolocationError,
 } from "utils/geolocation";
 
-import { fetchWeatherData } from "utils/weather";
+import { fetchWeatherData } from "data/fetch";
 
 export const getWeatherData = (state, dispatch) => () => {
   const { weatherData } = state;
