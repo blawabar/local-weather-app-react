@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 
 import "./WeatherEngine.scss";
 
-import { useWeatherService, useHeartBeat } from "hooks";
+import { useHeartBeat } from "hooks";
 import { WeatherScreen, LoadingScreen, ErrorScreen } from "components";
 
 import { WeatherContext } from "data/context";
 
 export const WeatherEngine = () => {
-  const heartBeat = useHeartBeat(15);
+  const {
+    state: { isLoading, error, success },
+    actions: { getWeatherData },
+  } = useContext(WeatherContext);
 
-  const { state, switchUnitsType } = useWeatherService([heartBeat]);
-  const { isLoading, error, weatherData, unitsType } = state;
+  useEffect(() => {
+    getWeatherData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useHeartBeat(15, getWeatherData);
 
   let content = <LoadingScreen message={"Getting user coordinates..."} />;
 
@@ -19,14 +26,8 @@ export const WeatherEngine = () => {
     content = <LoadingScreen />;
   } else if (error) {
     content = <ErrorScreen error={error.toString()} />;
-  } else if (weatherData) {
-    content = (
-      <WeatherContext.Provider
-        value={{ weatherData, unitsType, switchUnitsType }}
-      >
-        <WeatherScreen />
-      </WeatherContext.Provider>
-    );
+  } else if (success) {
+    content = <WeatherScreen />;
   }
 
   return <div className="weather-engine">{content}</div>;

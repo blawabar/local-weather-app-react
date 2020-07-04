@@ -16,7 +16,11 @@ class ErrorBoundary extends React.Component {
     const { error, errorInfo } = this.state;
 
     if (error) {
-      return <ErrorScreen error={`${error} - ${errorInfo.componentStack}`} />;
+      return (
+        <ErrorScreen
+          error={`${error.toString()} - ${errorInfo.componentStack}`}
+        />
+      );
     }
 
     return this.props.children;

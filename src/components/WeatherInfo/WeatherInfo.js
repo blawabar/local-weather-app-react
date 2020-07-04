@@ -12,9 +12,10 @@ import {
 import { WeatherContext } from "data/context";
 
 export const WeatherInfo = () => {
-  const { weatherData, switchUnitsType, unitsType } = useContext(
-    WeatherContext
-  );
+  const {
+    state: { weatherData, unitsType },
+    actions: { switchUnitsType },
+  } = useContext(WeatherContext);
 
   const { description, details, location, temp } = weatherData;
 

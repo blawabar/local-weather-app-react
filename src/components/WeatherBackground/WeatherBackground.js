@@ -9,8 +9,10 @@ import { WEATHER_ICON_TO_CLASS_MAP } from "data/constants";
 
 export const WeatherBackground = ({ children }) => {
   const {
-    weatherData: {
-      description: { icon },
+    state: {
+      weatherData: {
+        description: { icon },
+      },
     },
   } = useContext(WeatherContext);
 

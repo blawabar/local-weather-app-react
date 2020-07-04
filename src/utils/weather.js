@@ -1,4 +1,10 @@
-import { UNITS_TYPE, SERVICE_ACTION_TYPE } from "data/constants";
+import { UNITS_TYPE, ACTION_TYPES, API, TOKEN } from "data/constants";
+
+const {
+  GET_WEATHER_DATA_REQUEST,
+  GET_WEATHER_DATA_ERROR,
+  GET_WEATHER_DATA_SUCCESS,
+} = ACTION_TYPES;
 
 const trimNumericValue = (value) => parseFloat(value.toFixed(1));
 
@@ -54,13 +60,29 @@ export const convertWeatherDataValues = (unitsType, state) => {
   };
 };
 
-export const switchUnitsType = (state) => (dispatch) => {
-  return () =>
-    dispatch({
-      type: SERVICE_ACTION_TYPE.SWITCH_UNITS_TYPE,
-      payload:
-        state.unitsType === UNITS_TYPE.METRIC
-          ? UNITS_TYPE.IMPERIAL
-          : UNITS_TYPE.METRIC,
-    });
+export const fetchWeatherData = async (coord, dispatch) => {
+  const { lat, lon } = coord;
+  const URL = `${API}?lat=${lat}&lon=${lon}&units=metric&APPID=${TOKEN}`;
+
+  try {
+    dispatch({ type: GET_WEATHER_DATA_REQUEST });
+    const result = await fetch(URL);
+
+    if (result.ok) {
+      const data = await result.json();
+
+      dispatch({
+        type: GET_WEATHER_DATA_SUCCESS,
+        payload: normalizeWeatherData(data),
+      });
+    } else {
+      const { cod, message } = await result.json();
+      dispatch({
+        type: GET_WEATHER_DATA_ERROR,
+        payload: `Fetch error - code: ${cod}, message: ${message}`,
+      });
+    }
+  } catch (error) {
+    dispatch({ type: GET_WEATHER_DATA_ERROR, payload: error });
+  }
 };

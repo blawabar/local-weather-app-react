@@ -1,4 +1,4 @@
-import { SERVICE_ACTION_TYPE } from "data/constants";
+import { ACTION_TYPES } from "data/constants";
 
 export const getCoords = (onGetCoords, onError) => {
   if (navigator.geolocation) {
@@ -43,5 +43,5 @@ export const handleGeolocationError = (error, dispatch) => {
       break;
   }
 
-  dispatch({ type: SERVICE_ACTION_TYPE.GEOLOCATION_ERROR, payload: msg });
+  dispatch({ type: ACTION_TYPES.GEOLOCATION_ERROR, payload: msg });
 };
